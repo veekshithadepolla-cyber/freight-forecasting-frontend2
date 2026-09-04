@@ -1,0 +1,83 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  body {
+    @apply bg-navy-975 text-slate-200;
+  }
+}
+
+@layer components {
+  .card {
+    @apply rounded-xl border border-white/[0.06] bg-navy-900/70 backdrop-blur-sm shadow-card;
+  }
+  .card-hover {
+    @apply transition-all duration-200 hover:border-white/10 hover:shadow-card-hover;
+  }
+  .input-base {
+    @apply w-full rounded-lg border border-white/[0.08] bg-navy-925/80 px-3 py-2.5 text-sm text-slate-100
+      placeholder:text-slate-500 outline-none transition
+      focus:border-teal-400/50 focus:ring-2 focus:ring-teal-500/15
+      hover:border-white/[0.12];
+  }
+  .label-base {
+    @apply mb-1.5 block text-[11px] font-semibold uppercase tracking-wider text-slate-400;
+  }
+  .kpi-value {
+    @apply font-mono text-2xl font-semibold tracking-tight text-white;
+  }
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-md px-2.5 py-1 text-[11px] font-semibold;
+  }
+  .section-title {
+    @apply text-sm font-semibold text-white;
+  }
+  .section-sub {
+    @apply text-xs text-slate-500;
+  }
+  .nav-link {
+    @apply rounded-md px-3 py-1.5 text-xs font-medium text-slate-400 transition
+      hover:bg-white/5 hover:text-slate-200;
+  }
+  .nav-link-active {
+    @apply rounded-md px-3 py-1.5 text-xs font-medium text-teal-300 bg-teal-500/10;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 8px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(34, 211, 238, 0.2);
+}
+
+/* Select dropdown arrow styling */
+select.input-base {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2364a4b8' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  padding-right: 2.5rem;
+}
+
+/* Recharts tooltip override */
+.recharts-default-tooltip {
+  background: #0c1628 !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 8px !important;
+}
