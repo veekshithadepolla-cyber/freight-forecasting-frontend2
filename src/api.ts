@@ -3,7 +3,7 @@ import { API_URL } from '@/types';
 
 export async function fetchForecast(req: PredictRequest): Promise<PredictResponse> {
   const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), 20000);
+  const timeout = setTimeout(() => controller.abort(), 60000);
 
   try {
     const res = await fetch(API_URL, {
@@ -25,7 +25,9 @@ export async function fetchForecast(req: PredictRequest): Promise<PredictRespons
     return data;
   } catch (err) {
     if (err instanceof DOMException && err.name === 'AbortError') {
-      throw new Error('The request timed out. Is the forecast server running on port 8000?');
+      throw new Error(
+  'The forecast server took too long to respond. Render may be waking up the backend. Please try again.'
+);
     }
     if (err instanceof TypeError) {
       throw new Error(
